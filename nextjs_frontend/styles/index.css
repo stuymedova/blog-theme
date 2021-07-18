@@ -1,0 +1,149 @@
+/* Reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+
+/* ------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	font-size: 1.2rem;
+}
+li {
+  list-style-position: inside;
+}
+
+/* ------------------------------------------------- */
+
+p, ol, ul {
+  padding-bottom: .8rem;
+}
+
+/* ------------------------------------------------- */
+
+body {
+  display: grid;
+  gap: 2rem;
+}
+
+header {
+  grid-area: 1 / 1;
+}
+main {
+  grid-area: 1 / 2;
+}
+nav {
+  grid-area: 1 / 3; 
+  text-align: right;
+}
+
+header h1, nav li {
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+header h1 {
+  max-width: 175px;
+}
+nav ol, nav ul, nav li {
+  list-style: none;
+  padding-bottom: 0;
+  width: 175px;
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    gap: 0rem;
+  }
+
+  header {
+    grid-area: 1 / 1;
+  }
+  main {
+    grid-area: 2 / 1 / 2 / 3;
+  }
+  nav {
+    grid-area: 1 / 2;
+    margin-left: auto;
+    margin-bottom: 1rem;
+  }
+
+  header h1, nav li {
+    position: relative;
+  }
+}
+
+/* ------------------------------------------------- */
+
+.post {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1000fr 1fr;
+}
+
+/* .post div:nth-child(1) {
+  grid-area: 1 / 1;
+}
+.post div:nth-child(2) {
+  grid-area: 1 / 2 / 1 / 2;
+}
+.post div:nth-child(3) {
+  grid-area: 1 / 3;
+} */
+
+
+@media screen and (max-width: 1024px) {
+  .post {
+    gap: 0;
+    grid-template-columns: 0;
+  }
+
+  .post div:nth-child(1) {
+    grid-area: 1 / 1;
+  }
+  .post div:nth-child(2) {
+    grid-area: 2 / 1 / 2 / 3;
+  }
+  .post div:nth-child(3) {
+    grid-area: 1 / 2;
+    text-align: right;
+  }
+}
+
+/* ------------------------------------------------- */
