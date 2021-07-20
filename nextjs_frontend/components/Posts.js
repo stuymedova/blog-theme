@@ -7,7 +7,7 @@ export default function Posts({ posts }) {
   return (
     <>
       {posts.map((post) => (
-        <div className='post'>
+        <div className='post' key={post._id}>
           <div className='post__id'>
             <p>{pad(post.postIndex || 0, 3)}</p>
           </div>

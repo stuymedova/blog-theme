@@ -12,7 +12,7 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: {
+      options: { 
         source: 'title',
       },
     },

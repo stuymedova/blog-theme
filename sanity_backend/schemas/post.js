@@ -17,14 +17,14 @@ export default {
       },
     },
     {
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'string',
-    },
-    {
       name: 'content',
       title: 'Content',
       type: 'blockContent',
+    },
+    {
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'string',
     },
     {
       name: 'category',

@@ -5,16 +5,17 @@ export default function Navigation({ isPostsPage, category }) {
     <nav id='nav-main' role='navigation'>
       <li>
         {isPostsPage
-          ? <>
+          ? <ul>
+              <li><Link href='/'><a>All</a></Link></li>
               {category.map((category) => (
-                <ul>
+                <li key={category._id}>
                   <Link as={`/${category.slug}`} href='/[category]'>
                     <a>{category.title}</a>
                   </Link>
-                </ul>
+                </li>
               ))}
-            </>
-          : <ul><a href=''>Back</a></ul>
+            </ul>
+          : <ul><li><a href=''>Back</a></li></ul>
         }
       </li>
     </nav>

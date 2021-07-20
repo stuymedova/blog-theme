@@ -21,13 +21,13 @@ export default function Post({ siteMeta, data = {}, preview }) {
   return (
     <>
       <Alert preview={preview} />
-      <Layout isPostsPage={isPostsPage} siteTitle={siteTitle} post={post} preview={preview} />
+      <Layout isPostsPage={isPostsPage} siteTitle={siteTitle} post={post} />
     </>
   );
 };
 
 export async function getStaticProps({ params, preview = false }) {
-  const siteMeta = await getClient().fetch(siteMetaQuery);
+  const siteMeta = await sanityClient.fetch(siteMetaQuery);
   const post = await getClient(preview).fetch(postQuery, {
     slug: params.post,
   });

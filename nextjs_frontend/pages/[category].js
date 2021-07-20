@@ -1,5 +1,5 @@
 import { siteMetaQuery, categoryQuery, categoryPostsQuery, categorySlugsQuery } from '../lib/queries';
-import { sanityClient, getClient } from '../lib/sanity.server';
+import { sanityClient } from '../lib/sanity.server';
 
 import Layout from '../components/Layout';
 
@@ -13,9 +13,9 @@ export default function Category({ siteMeta, category, posts }) {
 }
 
 export async function getStaticProps({ params }) {
-  const siteMeta = await getClient().fetch(siteMetaQuery);
-  const category = await getClient().fetch(categoryQuery);
-  const posts = await getClient().fetch(categoryPostsQuery, {
+  const siteMeta = await sanityClient.fetch(siteMetaQuery);
+  const category = await sanityClient.fetch(categoryQuery);
+  const posts = await sanityClient.fetch(categoryPostsQuery, {
     slug: params.category,
   });
 
@@ -32,6 +32,3 @@ export async function getStaticPaths() {
     fallback: false,
   };
 };
-
-
-// TODO: Why is getClient() used on a homepage instead of sanityClient?

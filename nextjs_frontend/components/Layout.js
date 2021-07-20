@@ -9,7 +9,8 @@ export default function Layout({ isPostsPage, siteTitle, category, posts, post }
   return (
     <>
       <Meta />
-      <body>
+
+      <div id='content-wrapper'>
         <header>
           <Link href='/'>
             <a><h1>{siteTitle}</h1></a>
@@ -24,7 +25,7 @@ export default function Layout({ isPostsPage, siteTitle, category, posts, post }
             : <Post post={post} />
           }
         </main>
-      </body>
+      </div>
     </>
   )
 }

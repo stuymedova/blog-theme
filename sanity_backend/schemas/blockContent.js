@@ -1,6 +1,6 @@
 export default {
-  title: 'Block Content',
   name: 'blockContent',
+  title: 'Block Content',
   type: 'array',
   of: [
     {
@@ -26,8 +26,16 @@ export default {
       },
     },
     {
+      title: 'Image',
       type: 'image',
-      options: {hotspot: true},
-    },
+      fields: [{
+        title: 'Alternative Text',
+        name: 'alt',
+        type: 'string',
+        options: {
+          isHighlighted: true,
+        },
+      }],
+    }
   ],
 }
