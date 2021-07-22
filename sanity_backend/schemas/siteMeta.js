@@ -6,5 +6,6 @@ export default {
     name: 'title',
     title: 'Site Title',
     type: 'string',
+    validation: Rule => Rule.required(),
   }],
 }

@@ -40,7 +40,7 @@ export const categoryPostsQuery = `
 export const postQuery = `
 *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) | [0] {
   ${postFields},
-  content
+  content[] { ..., "asset": asset->metadata.dimensions }
 }`;
 
 

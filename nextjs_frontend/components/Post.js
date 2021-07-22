@@ -1,29 +1,40 @@
 import BlockContent from '@sanity/block-content-to-react';
 import { urlForImage } from '../lib/sanity';
+import Image from 'next/image';
+import ReactPlayer from 'react-player/lazy';
 import { parseISO, format } from 'date-fns';
-import { pad } from '../utils/index';
+import { isInternalURL, pad } from '../utils/index';
 
 export default function Post({ post }) {
   const serializers = {
+    marks: {
+      link: ({ mark: { href }, children }) => {
+        return isInternalURL(href)
+          ? <a href={href}>{children}</a>
+          : <a href={href} target='_blank' rel='noopener noreferrer'>{children}</a>
+      },
+    },
     types: {
-      image: ({ node: { asset, alt } }) => (
-        <picture>
-          <img
-            srcSet={`
-              ${urlForImage(asset).width(400)} 400w,
-              ${urlForImage(asset).width(600)} 800w,
-              ${urlForImage(asset).width(1024)} 1024w,
-              ${urlForImage(asset).width(1200)} 1200w,
-              ${urlForImage(asset).width(1600)} 1600w`}
-            sizes='auto'
-            src={urlForImage(asset)}
+      imageBlock: ({ node: { asset, alt } }) => (
+        <div className='image-wrapper'>
+          <Image
+            src={urlForImage(asset).url()}
+            width={asset.metadata.dimensions.width}
+            height={asset.metadata.dimensions.height}
+            layout='responsive' sizes='auto' quality='100'
             alt={alt} />
-        </picture>
+        </div>
       ),
-    }
-  };
-
-  // TODO: open external links in a new tab (target='_blank' rel='noopener noreferrer')
+      embedBlock: ({ node: { url } }) => (
+        <div className='embed-wrapper'>
+          <ReactPlayer 
+            width='100%' height='0'
+            url={url}
+            controls playsinline pip stopOnUnmount={false} />
+        </div>
+      ),
+    },
+  }
   
   return (
     <div className='post'>

@@ -6,7 +6,8 @@ export default {
     {
       name: 'title',
       title: 'Category',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'slug',
@@ -15,6 +16,7 @@ export default {
       options: { 
         source: 'title',
       },
+      validation: Rule => Rule.required(),
     },
   ]
 }

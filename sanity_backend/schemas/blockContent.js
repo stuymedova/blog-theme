@@ -14,28 +14,48 @@ export default {
       marks: {
         decorators: [],
         annotations: [{
-          title: 'URL',
           name: 'link',
+          title: 'URL',
           type: 'object',
-          fields: [{
-            title: 'URL',
-            name: 'href',
-            type: 'url',
-          }],
+          fields: [
+            {
+              name: 'href',
+              title: 'URL',
+              type: 'url',
+              validation: Rule => Rule.required().uri({
+                scheme: ['http', 'https', 'mailto', 'tel'],
+              }),
+            },
+          ],
         }],
       },
     },
     {
+      name: 'imageBlock',
       title: 'Image',
       type: 'image',
       fields: [{
-        title: 'Alternative Text',
         name: 'alt',
+        title: 'Alternative text',
         type: 'string',
+        description: 'Important for SEO and accessibility',
         options: {
           isHighlighted: true,
         },
       }],
-    }
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'embedBlock',
+      title: 'Embed',
+      type: 'object',
+      fields: [{
+        name: 'url',
+        title: 'URL',
+        type: 'url',
+        description: 'Supported platforms: YouTube, Vimeo, Twitch, SoundCloud',
+        validation: Rule => Rule.required().uri(),
+      }],
+    },
   ],
 }

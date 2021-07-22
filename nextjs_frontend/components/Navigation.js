@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Navigation({ isPostsPage, category }) {
   return (
-    <nav id='nav-main' role='navigation'>
+    <nav role='navigation'>
       <li>
         {isPostsPage
           ? <ul>

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { parseISO, format } from 'date-fns';
-
 import { pad } from '../utils/index';
 
 export default function Posts({ posts }) {
