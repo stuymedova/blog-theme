@@ -1,14 +1,23 @@
 import BlockContent from '@sanity/block-content-to-react';
 import { urlForImage } from '../lib/sanity';
 import Image from 'next/image';
-import ReactPlayer from 'react-player/lazy';
+import getVideoId from 'get-video-id';
 import { parseISO, format } from 'date-fns';
-import { isInternalURL, pad } from '../utils/index';
+import { pad } from '../utils/index';
 
 export default function Post({ post }) {
   const serializers = {
     marks: {
       link: ({ mark: { href }, children }) => {
+        const isInternalURL = (href) => {
+          try {
+            const url = new URL(href, window.location.origin);
+            return url.hostname === window.location.hostname;
+          } catch {
+            return false;
+          }
+        };
+
         return isInternalURL(href)
           ? <a href={href}>{children}</a>
           : <a href={href} target='_blank' rel='noopener noreferrer'>{children}</a>
@@ -25,14 +34,46 @@ export default function Post({ post }) {
             alt={alt} />
         </div>
       ),
-      embedBlock: ({ node: { url } }) => (
-        <div className='embed-wrapper'>
-          <ReactPlayer 
-            width='100%' height='0'
-            url={url}
-            controls playsinline pip stopOnUnmount={false} />
-        </div>
-      ),
+      embedBlock: ({ node: { url } }) => {
+        const videoId = getVideoId(url).id;
+
+        // YOUTUBE
+        if(url.includes('youtube')) {
+          return (
+            <div className='embed-wrapper'>
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+                title='YouTube video player'
+                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' 
+                allowFullScreen />
+            </div>
+          )
+        }
+        // VIMEO
+        if(url.includes('vimeo')) {
+          return (
+            <div className='embed-wrapper'>
+              <iframe
+                src={`https://player.vimeo.com/video/${videoId}`} 
+                title='Vimeo video player'
+                allow='autoplay; fullscreen; picture-in-picture'
+                allowFullScreen />
+            </div>
+          )
+        }
+        // SOUNDCLOUD
+        if(url.includes('soundcloud')) {
+          return (
+            <div className='embed-wrapper'>
+              <iframe
+                src={`https://w.soundcloud.com/player/?url=${url}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true`}
+                title='SoundCloud audio player'
+                scrolling='no' allow='autoplay' />
+            </div>
+          )
+        }
+        return null;
+      },
     },
   }
   

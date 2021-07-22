@@ -53,7 +53,7 @@ export default {
         name: 'url',
         title: 'URL',
         type: 'url',
-        description: 'Supported platforms: YouTube, Vimeo, Twitch, SoundCloud',
+        description: 'Supported platforms: YouTube, Vimeo, SoundCloud',
         validation: Rule => Rule.required().uri(),
       }],
     },
