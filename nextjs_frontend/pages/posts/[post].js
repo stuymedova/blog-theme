@@ -1,11 +1,11 @@
-import { siteMetaQuery, postQuery, postSlugsQuery } from '../../lib/queries';
+import { siteSettingsQuery, postQuery, postSlugsQuery } from '../../lib/queries';
 import { usePreviewSubscription } from '../../lib/sanity';
 import { sanityClient, getClient } from '../../lib/sanity.server';
 
 import Alert from '../../components/Alert';
 import Layout from '../../components/Layout';
 
-export default function Post({ siteMeta, data = {}, preview }) {
+export default function Post({ siteSettings, data = {}, preview }) {
   const slug = data?.post?.slug;
   const {
     data: { post },
@@ -14,26 +14,24 @@ export default function Post({ siteMeta, data = {}, preview }) {
     initialData: data,
     enabled: preview && slug,
   });
-
   const isPostsPage = false;
-  const siteTitle = siteMeta[0].title;
 
   return (
     <>
       <Alert preview={preview} />
-      <Layout isPostsPage={isPostsPage} siteTitle={siteTitle} post={post} />
+      <Layout isPostsPage={isPostsPage} siteSettings={siteSettings} post={post} />
     </>
   );
 };
 
 export async function getStaticProps({ params, preview = false }) {
-  const siteMeta = await sanityClient.fetch(siteMetaQuery);
+  const siteSettings = await sanityClient.fetch(siteSettingsQuery);
   const post = await getClient(preview).fetch(postQuery, {
     slug: params.post,
   });
 
   return {
-    props: { siteMeta, data: { post }, preview },
+    props: { siteSettings, data: { post }, preview },
   };
 };
 

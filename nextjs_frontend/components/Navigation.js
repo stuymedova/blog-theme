@@ -15,7 +15,11 @@ export default function Navigation({ isPostsPage, category }) {
                 </li>
               ))}
             </ul>
-          : <ul><li><a href=''>Back</a></li></ul>
+          : <ul><li>
+              <Link href='/'>
+                <a>Back</a>
+              </Link>
+            </li></ul>
         }
       </li>
     </nav>

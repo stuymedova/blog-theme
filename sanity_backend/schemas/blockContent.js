@@ -6,27 +6,29 @@ export default {
     {
       title: 'Block',
       type: 'block',
-      styles: [{title: 'Normal', value: 'normal'}],
+      styles: [
+        {title: 'Normal', value: 'normal'}
+      ],
       lists: [
         {title: 'Bullet', value: 'bullet'},
         {title: 'Number', value: 'number'},
       ],
       marks: {
-        decorators: [],
+        decorators: [
+          {title: 'Emphasis', value: 'em'}
+        ],
         annotations: [{
           name: 'link',
           title: 'URL',
           type: 'object',
-          fields: [
-            {
-              name: 'href',
-              title: 'URL',
-              type: 'url',
-              validation: Rule => Rule.required().uri({
-                scheme: ['http', 'https', 'mailto', 'tel'],
-              }),
-            },
-          ],
+          fields: [{
+            name: 'href',
+            title: 'URL',
+            type: 'url',
+            validation: Rule => Rule.required().uri({
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
+          }],
         }],
       },
     },
@@ -56,6 +58,30 @@ export default {
         description: 'Supported platforms: YouTube, Vimeo, SoundCloud',
         validation: Rule => Rule.required().uri(),
       }],
+    },
+    {
+      name: 'videoBlock',
+      title: 'Video',
+      type: 'file',
+      options: {
+        accept: 'video/*',
+      },
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'audioBlock',
+      title: 'Audio',
+      type: 'file',
+      options: {
+        accept: 'audio/*',
+      },
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'fileBlock',
+      title: 'Other',
+      type: 'file',
+      validation: Rule => Rule.required(),
     },
   ],
 }

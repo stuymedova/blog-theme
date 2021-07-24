@@ -1,6 +1,6 @@
 export default {
   name: 'post',
-  title: 'Post',
+  title: 'Posts',
   type: 'document',
   fields: [
     {
@@ -13,7 +13,7 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      description: 'Slug is used to create a unique URL',
+      description: 'Slug is used to create unique URLs',
       options: {
         source: 'title',
       },
@@ -28,22 +28,28 @@ export default {
     {
       name: 'excerpt',
       title: 'Excerpt',
-      type: 'string',
+      type: 'text',
+      rows: 5,
       validation: Rule => Rule.required(),
     },
     {
       name: 'category',
       title: 'Category',
-      type: 'reference',
-      to: [{ type: 'category' }],
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [{ type: 'category' }],
+      }],
       validation: Rule => Rule.required(),
     },
     {
-      name: 'date',
-      title: 'Date',
-      type: 'date',
+      name: 'datetime',
+      title: 'Date and time',
+      type: 'datetime',
+      description: 'Time will not be displayed, but is needed to properly order multiple posts published on the same day',
       options: {
         dateFormat: 'MM.DD.YYYY',
+        timeFormat: 'hh:mm A',
         calendarTodayLabel: 'Today'
       },
       validation: Rule => Rule.required(),

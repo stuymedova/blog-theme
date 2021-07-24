@@ -2,43 +2,46 @@ const postFields = `
   _id,
   name,
   title,
-  date,
+  datetime,
   "slug": slug.current,
-  "postIndex": count(*[_type == "post" && !(_id in path("drafts.**")) && _createdAt > ^._createdAt]) + 1
+  "index": count(*[_type == "post" && !(_id in path("drafts.**")) && datetime > ^.datetime]) + 1
 `;
 
 
-export const siteMetaQuery = `
-*[_type == "siteMeta"] {
+export const siteSettingsQuery = `
+*[_type == "siteSettings"][0] {
   _id,
-  title
+  title,
+  url,
+  description,
+  "favicon": favicon.asset->,
+  "image": image.asset->,
+  "twitterUsername": twitterUsername
 }`;
 
 export const categoryQuery = `
-*[_type == "category"] | order(date desc, _updatedAt desc) {
+*[_type == "category"] | order(_createdAt asc) {
   _id,
   title,
   "slug": slug.current
 }`;
 
-
-export const indexQuery = `
-*[_type == "post"] | order(date desc, _updatedAt desc) {
+export const postsQuery = `
+*[_type == "post"] | order(datetime desc) {
   ${postFields},
   excerpt
 }`;
 
 export const categoryPostsQuery = `
-*[_type == "post" && category._ref in *[_type == "category" && slug.current == $slug]._id] | order(date desc, _updatedAt desc) {
-  ${postFields},
-  excerpt
-}`;
+*[_type == "category" && slug.current == $slug][0] {
+  "posts": *[_type == "post" && references(^._id)] | order(datetime desc) {
+    ${postFields},
+    excerpt
+  }
+}`
 
-
-// TODO: Why is there order in the query?
-// TODO: Change to "order(date desc, _updatedAt desc)" - ?
 export const postQuery = `
-*[_type == "post" && slug.current == $slug] | order(_updatedAt desc) | [0] {
+*[_type == "post" && slug.current == $slug][0] {
   ${postFields},
   content[]{..., "asset": asset->}
 }`;

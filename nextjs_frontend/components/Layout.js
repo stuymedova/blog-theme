@@ -5,15 +5,15 @@ import Navigation from './Navigation';
 import Posts from './Posts';
 import Post from './Post';
 
-export default function Layout({ isPostsPage, siteTitle, category, posts, post }) {
+export default function Layout({ siteSettings, isPostsPage, category, posts, post }) {
   return (
     <>
-      <Meta />
+      <Meta siteSettings={siteSettings} />
 
       <div id='content-wrapper'>
         <header>
           <Link href='/'>
-            <a><h1>{siteTitle}</h1></a>
+            <a><h1>{siteSettings.title}</h1></a>
           </Link>
         </header>
         

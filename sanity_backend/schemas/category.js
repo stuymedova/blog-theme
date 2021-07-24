@@ -1,6 +1,6 @@
 export default {
   name: 'category',
-  title: 'Category',
+  title: 'Categories',
   type: 'document',
   fields: [
     {
@@ -13,10 +13,11 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: 'Slug is used to create unique URLs',
       options: { 
         source: 'title',
       },
       validation: Rule => Rule.required(),
     },
-  ]
+  ],
 }
