@@ -6,7 +6,7 @@ export default function Meta({ siteSettings }) {
   const router = useRouter();
 
   return (
-    <Head>
+    <Head lang='en'>
       <meta httpEquiv='Content-Type' content='text/html; charset=UTF-8' />
       <link rel='canonical' href={`${url + router.asPath}`} />
       <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1' />

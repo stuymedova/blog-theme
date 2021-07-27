@@ -9,8 +9,8 @@ export default function Posts({ posts }) {
         const { _id, index, slug, title, excerpt, datetime } = post;
 
         return (
-          <Link href={`/posts/${slug}`}><a className='post-wrapper'>
-            <div className='post' key={_id}>
+          <Link href={`/posts/${slug}`} key={_id}><a className='post-wrapper'>
+            <div className='post'>
               <div className='post__id'>
                 <p>{pad(index, 3)}</p>
               </div>
@@ -29,4 +29,6 @@ export default function Posts({ posts }) {
       })}
     </>
   )
+
+  // TODO: change place of a link wrapper (key!)
 }
