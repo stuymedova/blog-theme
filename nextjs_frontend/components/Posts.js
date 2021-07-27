@@ -15,13 +15,13 @@ export default function Posts({ posts }) {
                 <p>{pad(index, 3)}</p>
               </div>
 
+              <div className='post__date'>
+                <p>{format(parseISO(datetime), 'MM.dd.yyyy')}</p>
+              </div>
+
               <div className='post__body'>
                 <h2 className='post__title'>{title}</h2>
                 <p className='post__excerpt'>{excerpt}</p>
-              </div>
-
-              <div className='post__date'>
-                <p>{format(parseISO(datetime), 'MM.dd.yyyy')}</p>
               </div>
             </div>
           </a></Link>
@@ -29,6 +29,4 @@ export default function Posts({ posts }) {
       })}
     </>
   )
-
-  // TODO: change place of a link wrapper (key!)
 }

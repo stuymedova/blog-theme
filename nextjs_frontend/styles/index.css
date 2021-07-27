@@ -1,0 +1,7 @@
+@import 'globals.css';
+
+@import 'components/layout.css';
+@import 'components/alert.css';
+@import 'components/navigation.css';
+@import 'components/post.css';
+@import 'components/posts.css';

@@ -1,0 +1,49 @@
+/* Layout styles are specified in the posts.css file */
+/* Block content */
+
+.post__content a {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.post__content li {
+  list-style-position: inside;
+}
+.post__content ul li {
+  list-style: none;
+}
+.post__content ul li:before { 
+  content: '- ';
+};
+
+div, img, video, audio {
+  vertical-align: middle;
+}
+
+p:not(:empty), ol:not(:empty), ul:not(:empty), 
+.media-wrapper {
+  margin-bottom: .75rem;
+}
+
+.embed-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.embed-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-wrapper > video {
+  width: 100%;
+  height: auto;
+}
+
+.audio-wrapper > audio {
+  width: 100%;
+}

@@ -1,0 +1,25 @@
+.post__id { grid-area: post__id; }
+.post__body { grid-area: post__body; }
+.post__date { grid-area: post__date; }
+
+.post {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'post__id post__body post__date';
+}
+
+@media screen and (max-width: 1024px) {
+  .post {
+    gap: 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      'post__id post__date'
+      'post__body post__body';
+  }
+
+  .post__date {
+    text-align: right;
+  }
+}

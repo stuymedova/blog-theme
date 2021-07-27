@@ -97,14 +97,16 @@ export default function Post({ post }) {
       <div className='post__id'>
         <p>{pad(index || 0, 3)}</p>
       </div>
-      <div className='post__body'>
-        <h2 className='post__title'>{title ? title : 'Title'}</h2>
-        <BlockContent blocks={content} serializers={serializers} className='post__content' />
-      </div>
+
       <div className='post__date'>
         <p>{datetime 
               ? format(parseISO(datetime), 'MM.dd.yyyy') 
               : format(parseISO('2021-01-01T00:00:00.000Z'), 'MM.dd.yyyy')}</p>
+      </div>
+      
+      <div className='post__body'>
+        <h2 className='post__title'>{title ? title : 'Title'}</h2>
+        <BlockContent blocks={content} serializers={serializers} className='post__content' />
       </div>
     </div>
   )
