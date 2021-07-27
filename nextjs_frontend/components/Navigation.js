@@ -9,7 +9,7 @@ export default function Navigation({ isPostsPage, category }) {
               <li><Link href='/'><a>All</a></Link></li>
               {category.map((category) => (
                 <li key={category._id}>
-                  <Link as={`/${category.slug}`} href='/[category]'>
+                  <Link href={`/${category.slug}`}>
                     <a>{category.title}</a>
                   </Link>
                 </li>

@@ -2,8 +2,8 @@ import BlockContent from '@sanity/block-content-to-react';
 import { urlForImage } from '../lib/sanity';
 import Image from 'next/image';
 import getVideoId from 'get-video-id';
+import { pad } from '../lib/utils';
 import { parseISO, format } from 'date-fns';
-import { pad } from '../utils/index';
 
 export default function Post({ post }) {
   const { index, title, content, datetime } = post;

@@ -32,7 +32,7 @@ export default () =>
             .showIcons(false)
             .filter('_type == "category"')
             .defaultOrdering([
-              { field: '_createdAt', direction: 'asc' } // TODO: check, currently displayed in descending order, may be a caching issue
+              { field: '_createdAt', direction: 'asc' }
             ])
         ),
       ...S.documentTypeListItems().filter(

@@ -1,4 +1,15 @@
-/* Reset */
+@font-face {
+  font-family: 'Akzidenz Grotesk';
+  /* src:  url('/fonts/akzidenzgroteskpro-regular-webfont.woff') format('woff'); */
+  src:  url('/fonts/AkzidenzGroteskPro-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Akzidenz Grotesk It';
+  src:  url('/fonts/AkzidenzGroteskPro-It.woff2') format('woff2'),
+        url('/fonts/AkzidenzGroteskPro-It.woff') format('woff');
+}
+
+/* Reset ------------------------------------------- */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -25,11 +36,11 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-  line-height: 1;
-  /* text-rendering: geometricPrecision;
+  line-height: 1.15;
+  text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ------------------------------------------------- */
@@ -47,11 +58,11 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  font-family: serif, 'Helvetica', sans-serif;
-  font-size: 1.2rem;
+  font-family: 'Akzidenz Grotesk', 'Helvetica', sans-serif;
+  font-size: 1.225rem;
 }
 em {
-  font-style: italic;
+  font-family: 'Akzidenz Grotesk It', 'Helvetica', sans-serif;
 }
 
 nav *, .post__body * {
@@ -63,6 +74,12 @@ nav *, .post__body * {
 li {
   list-style-position: inside;
 }
+ul li {
+  list-style: none;
+}
+.post__content ul li:before { 
+  content: '- ';
+};
 
 div, img, video, audio {
   vertical-align: middle;
@@ -70,8 +87,21 @@ div, img, video, audio {
 
 p:not(:empty), ol:not(:empty), ul:not(:empty), 
 .media-wrapper {
-  margin-bottom: .8rem;
+  margin-bottom: .75rem;
 }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+header a, nav a, .post-wrapper {
+  text-decoration: none;
+}
+
+/* .post:not(:last-child) {
+  margin-bottom: .5rem;
+} TODO: wanted but doesn't work */
 
 /* ------------------------------------------------- */
 
@@ -84,17 +114,22 @@ main { grid-area: main; }
   column-gap: 2rem;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'header main nav';
+
+  padding: .75rem .75rem 0 .75rem;
+  /* TODO: match padding with 
+    the padding-bottom value of the content
+    top of the sticky-positioned elements */
 }
 
-header h1, nav li {
+header h1, nav ul {
   position: sticky;
-  top: 0;
+  top: .75rem;
   left: 0;
 }
 header h1 {
   max-width: 175px;
 }
-nav ul, nav li {
+nav ul {
   list-style: none;
   padding-bottom: 0;
   width: 175px;
@@ -110,7 +145,7 @@ nav ul, nav li {
       'main main';
   }
 
-  header h1, nav ul, nav li {
+  header h1, nav ul, nav ul li {
     position: relative;
     width: auto;
   }
@@ -127,6 +162,9 @@ nav ul, nav li {
   gap: 2rem;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'post__id post__body post__date';
+}
+.post:not(:last-child) {
+  margin-bottom: .5rem;
 }
 
 @media screen and (max-width: 1024px) {
