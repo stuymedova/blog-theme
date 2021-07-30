@@ -1,3 +1,4 @@
+/* Layout */
 .post__id { grid-area: post__id; }
 .post__body { grid-area: post__body; }
 .post__date { grid-area: post__date; }
@@ -22,4 +23,12 @@
   .post__date {
     text-align: right;
   }
+}
+
+/* Other styles */
+.post__excerpt {
+  margin-bottom: 0;
+}
+.post-wrapper .post {
+  margin-bottom: .75rem;
 }

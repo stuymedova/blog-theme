@@ -1,6 +1,6 @@
 /* Layout styles are specified in the posts.css file */
-/* Block content */
 
+/* Block content styles */
 .post__content a {
   color: #000000;
   text-decoration: underline;
@@ -20,8 +20,8 @@ div, img, video, audio {
   vertical-align: middle;
 }
 
-p:not(:empty), ol:not(:empty), ul:not(:empty), 
-.media-wrapper {
+p:not(:empty):not(:last-child), ol:not(:empty):not(:last-child), 
+ul:not(:empty):not(:last-child), .media-wrapper:not(:last-child) {
   margin-bottom: .75rem;
 }
 

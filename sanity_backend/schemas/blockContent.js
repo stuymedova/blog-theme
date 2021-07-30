@@ -10,16 +10,16 @@ export default {
         {title: 'Normal', value: 'normal'}
       ],
       lists: [
-        {title: 'Bullet', value: 'bullet'},
-        {title: 'Number', value: 'number'},
+        {title: 'Unordered list', value: 'bullet'},
+        {title: 'Ordered list', value: 'number'},
       ],
       marks: {
         decorators: [
-          {title: 'Emphasis', value: 'em'}
+          {title: 'Italic text', value: 'em'}
         ],
         annotations: [{
           name: 'link',
-          title: 'URL',
+          title: 'Link',
           type: 'object',
           fields: [{
             name: 'href',
