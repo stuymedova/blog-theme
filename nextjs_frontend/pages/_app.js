@@ -1,7 +1,10 @@
 import '../styles/index.css';
+import HistoryContext from '../hooks/useRouteHistory';
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+    <HistoryContext>
+      <Component {...pageProps} />
+    </HistoryContext>
   )
 }

@@ -43,6 +43,7 @@ export const categoryPostsQuery = `
 export const postQuery = `
 *[_type == "post" && slug.current == $slug][0] {
   ${postFields},
+  "category": category[]->,
   content[]{..., "asset": asset->}
 }`;
 

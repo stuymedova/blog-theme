@@ -17,7 +17,7 @@ export default function Layout({ siteSettings, isPostsPage, category, posts, pos
           </Link>
         </header>
         
-        <Navigation isPostsPage={isPostsPage} category={category} />
+        <Navigation isPostsPage={isPostsPage} category={category} post={post} />
 
         <main>
           {isPostsPage
