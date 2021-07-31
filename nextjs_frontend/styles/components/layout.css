@@ -9,9 +9,6 @@ main { grid-area: main; }
   grid-template-areas: 'header main nav';
 
   padding: .75rem;
-  /* TODO: match padding with 
-    the padding-bottom value of the content
-    the top value of the sticky-positioned elements */
 }
 
 header h1 {
@@ -21,7 +18,6 @@ header h1 {
 
   max-width: 175px;
 }
-
 nav ul {
   position: sticky;
   top: .75rem;
@@ -31,6 +27,7 @@ nav ul {
   width: 175px;
   text-align: right;
 }
+
 nav ul li {
   list-style: none;
 }
@@ -44,8 +41,12 @@ nav ul li {
       'main main';
   }
 
+  header, nav {
+    position: static;
+    margin-bottom: .75rem;
+  }
+
   header h1, nav ul, nav ul li {
-    position: relative;
     width: auto;
   }
 }

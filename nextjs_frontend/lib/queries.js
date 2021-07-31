@@ -7,7 +7,7 @@ const postFields = `
   "index": count(*[_type == "post" && !(_id in path("drafts.**")) && datetime > ^.datetime]) + 1
 `;
 
-
+// Site Settings
 export const siteSettingsQuery = `
 *[_type == "siteSettings"][0] {
   _id,
@@ -20,7 +20,7 @@ export const siteSettingsQuery = `
   googleAnalyticsId
 }`;
 
-
+// Categor(-ies/-y)
 export const categoriesQuery = `
 *[_type == "category"] | order(_createdAt asc) {
   _id,
@@ -30,12 +30,10 @@ export const categoriesQuery = `
 
 export const categoryQuery = `
 *[_type == "category" && slug.current == $slug][0] {
-  _id,
-  title,
-  "slug": slug.current
+  title
 }`
 
-
+// Posts
 export const postsQuery = `
 *[_type == "post"] | order(datetime desc) {
   ${postFields},
@@ -50,7 +48,7 @@ export const categoryPostsQuery = `
   }
 }`
 
-
+// A single post
 export const postQuery = `
 *[_type == "post" && slug.current == $slug][0] {
   ${postFields},
@@ -58,15 +56,14 @@ export const postQuery = `
   content[]{..., "asset": asset->}
 }`;
 
-
+// Slugs
 export const postSlugsQuery = `
 *[_type == "post" && defined(slug.current)][].slug.current`;
 
 export const categorySlugsQuery = `
 *[_type == "category" && defined(slug.current)][].slug.current`;
 
-
-// used in preview, see pages/api/preview.js
+// Post preview, see pages/api/preview.js
 export const postBySlugQuery = `
 *[_type == "post" && slug.current == $slug][0] {
   ${postFields},

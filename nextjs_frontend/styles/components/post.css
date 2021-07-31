@@ -16,7 +16,7 @@
   content: '- ';
 };
 
-div, img, video, audio {
+.media-wrapper, img {
   vertical-align: middle;
 }
 
@@ -42,8 +42,10 @@ ul:not(:empty):not(:last-child), .media-wrapper:not(:last-child) {
 .video-wrapper > video {
   width: 100%;
   height: auto;
+  vertical-align: middle;
 }
 
 .audio-wrapper > audio {
   width: 100%;
+  vertical-align: middle;
 }

@@ -14,7 +14,7 @@ export default {
       title: 'URL',
       type: 'string',
       validation: Rule => Rule.required().uri(),
-    }, // TODO: Makes sense to add more rigorous validation rules (RegEx)
+    },
     {
       name: 'description',
       title: 'Description',

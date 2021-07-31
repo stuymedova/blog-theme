@@ -12,9 +12,11 @@ export default function Layout({ isPostsPage, pageTitle, siteSettings, categorie
 
       <div id='content-wrapper'>
         <header>
-          <Link href='/'>
-            <a><h1>{siteSettings.title}</h1></a>
-          </Link>
+          <h1>
+            <Link href='/'>
+              <a>{siteSettings.title}</a>
+            </Link>
+          </h1>
         </header>
         
         <Navigation isPostsPage={isPostsPage} categories={categories} post={post} />
