@@ -1,22 +1,22 @@
-import { siteSettingsQuery, categoryQuery, postsQuery } from '../lib/queries';
+import { siteSettingsQuery, categoriesQuery, postsQuery } from '../lib/queries';
 import { sanityClient } from '../lib/sanity.server';
 
 import Layout from '../components/Layout';
 
-export default function Index({ siteSettings, category, posts }) {
+export default function Index({ siteSettings, categories, posts }) {
   const isPostsPage = true;
 
   return (
-    <Layout isPostsPage={isPostsPage} siteSettings={siteSettings} category={category} posts={posts} />
+    <Layout isPostsPage={isPostsPage} siteSettings={siteSettings} categories={categories} posts={posts} />
   )
 }
 
 export async function getStaticProps() {
   const siteSettings = await sanityClient.fetch(siteSettingsQuery);
-  const category = await sanityClient.fetch(categoryQuery);
+  const categories = await sanityClient.fetch(categoriesQuery);
   const posts = await sanityClient.fetch(postsQuery);
 
   return {
-    props: { siteSettings, category, posts },
+    props: { siteSettings, categories, posts },
   }
 }

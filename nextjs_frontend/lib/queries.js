@@ -16,15 +16,25 @@ export const siteSettingsQuery = `
   description,
   "favicon": favicon.asset->,
   "image": image.asset->,
-  "twitterUsername": twitterUsername
+  twitterUsername,
+  googleAnalyticsId
 }`;
 
-export const categoryQuery = `
+
+export const categoriesQuery = `
 *[_type == "category"] | order(_createdAt asc) {
   _id,
   title,
   "slug": slug.current
 }`;
+
+export const categoryQuery = `
+*[_type == "category" && slug.current == $slug][0] {
+  _id,
+  title,
+  "slug": slug.current
+}`
+
 
 export const postsQuery = `
 *[_type == "post"] | order(datetime desc) {
@@ -39,6 +49,7 @@ export const categoryPostsQuery = `
     excerpt
   }
 }`
+
 
 export const postQuery = `
 *[_type == "post" && slug.current == $slug][0] {

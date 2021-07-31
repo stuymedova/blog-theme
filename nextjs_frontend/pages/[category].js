@@ -1,25 +1,29 @@
-import { siteSettingsQuery, categoryQuery, categoryPostsQuery, categorySlugsQuery } from '../lib/queries';
+import { siteSettingsQuery, categoriesQuery, categoryQuery, categoryPostsQuery, categorySlugsQuery } from '../lib/queries';
 import { sanityClient } from '../lib/sanity.server';
 
 import Layout from '../components/Layout';
 
-export default function Category({ siteSettings, category, categoryPosts: {posts} }) {
+export default function Category({ siteSettings, categories, category, categoryPosts: {posts} }) {
   const isPostsPage = true;
+  const pageTitle = category.title;
 
   return (
-    <Layout isPostsPage={isPostsPage} siteSettings={siteSettings} category={category} posts={posts} />
+    <Layout isPostsPage={isPostsPage} pageTitle={pageTitle} siteSettings={siteSettings} categories={categories} posts={posts} />
   )
 }
 
 export async function getStaticProps({ params }) {
   const siteSettings = await sanityClient.fetch(siteSettingsQuery);
-  const category = await sanityClient.fetch(categoryQuery);
+  const categories = await sanityClient.fetch(categoriesQuery);
+  const category = await sanityClient.fetch(categoryQuery, {
+    slug: params.category,
+  });
   const categoryPosts = await sanityClient.fetch(categoryPostsQuery, {
     slug: params.category,
   });
 
   return {
-    props: { siteSettings, category, categoryPosts },
+    props: { siteSettings, categories, category, categoryPosts },
   }
 }
 
@@ -29,5 +33,5 @@ export async function getStaticPaths() {
   return {
     paths: paths.map((category) => ({ params: { category } })),
     fallback: false,
-  };
-};
+  }
+}

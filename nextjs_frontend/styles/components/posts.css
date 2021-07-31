@@ -22,13 +22,21 @@
 
   .post__date {
     text-align: right;
+    margin-left: auto;
   }
 }
 
 /* Other styles */
+.post__id {
+  width: 3rem;
+}
+.post__date {
+  width: 8rem;
+}
+
 .post__excerpt {
   margin-bottom: 0;
 }
-.post-wrapper .post {
+.post-wrapper:not(:last-child) .post {
   margin-bottom: .75rem;
 }

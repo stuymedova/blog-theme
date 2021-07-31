@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useHistoryContext } from '../hooks/useRouteHistory';
 
-export default function Navigation({ isPostsPage, category, post }) {
+export default function Navigation({ isPostsPage, categories, post }) {
   const { prevPath, removeHistory } = useHistoryContext();
   const backToCategory = post?.category?.find(category => `/${category.slug.current}` === prevPath);
 
@@ -12,7 +12,7 @@ export default function Navigation({ isPostsPage, category, post }) {
             <li>
               <Link href='/'><a>All</a></Link>
             </li>
-            {category.map((category) => (
+            {categories.map((category) => (
               <li key={category._id}>
                 <Link href={`/${category.slug}`}>
                   <a>{category.title}</a>
@@ -34,5 +34,5 @@ export default function Navigation({ isPostsPage, category, post }) {
           </ul>
       }
     </nav>
-  );
-};
+  )
+}

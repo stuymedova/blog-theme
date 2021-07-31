@@ -2,10 +2,6 @@ export default {
   name: 'siteSettings',
   type: 'document',
   title: 'Site Settings',
-  fieldsets: [{
-    name: 'socialMedia', 
-    title: 'Social Media',
-  }],
   fields: [
     {
       name: 'title',
@@ -40,13 +36,18 @@ export default {
       title: 'Open Graph Image',
       type: 'image',
       description: 'Recommended image size: 1200 x 628 pixels',
-      fieldset: 'socialMedia',
     },
     {
       name: 'twitterUsername',
       title: 'Twitter Username',
+      description: '@username',
       type: 'string',
-      fieldset: 'socialMedia',
+    },
+    {
+      name: 'googleAnalyticsId',
+      title: 'Google Analytics ID',
+      type: 'string',
+      description: 'Tracking ID in the form G-XXXXXXXX. Keep this field empty if you are not using it'
     },
   ],
 }

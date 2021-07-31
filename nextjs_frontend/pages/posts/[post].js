@@ -7,19 +7,18 @@ import Layout from '../../components/Layout';
 
 export default function Post({ siteSettings, data = {}, preview }) {
   const slug = data?.post?.slug;
-  const {
-    data: { post },
-  } = usePreviewSubscription(postQuery, {
+  const { data: { post } } = usePreviewSubscription(postQuery, {
     params: { slug },
     initialData: data,
     enabled: preview && slug,
   });
   const isPostsPage = false;
+  const pageTitle = post.title;
 
   return (
     <>
       <Alert preview={preview} />
-      <Layout isPostsPage={isPostsPage} siteSettings={siteSettings} post={post} />
+      <Layout isPostsPage={isPostsPage} pageTitle={pageTitle} siteSettings={siteSettings} post={post} />
     </>
   );
 };
