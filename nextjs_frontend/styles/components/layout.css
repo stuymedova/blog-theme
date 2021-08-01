@@ -4,27 +4,27 @@ main { grid-area: main; }
 
 #content-wrapper {
   display: grid;
-  column-gap: 2rem;
+  column-gap: 2.5rem;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'header main nav';
 
-  padding: .75rem;
+  padding: .8rem;
 }
 
 header h1 {
   position: sticky;
-  top: .75rem;
+  top: .8rem;
   left: 0;
 
-  max-width: 175px;
+  width: 125px;
 }
 nav ul {
   position: sticky;
-  top: .75rem;
+  top: .8rem;
   right: 0;
 
   list-style: none;
-  width: 175px;
+  width: 160px;
   text-align: right;
 }
 
@@ -32,7 +32,7 @@ nav ul li {
   list-style: none;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1112px) {
   #content-wrapper {
     column-gap: 0;
     grid-template-columns: 1fr 1fr;
@@ -43,7 +43,7 @@ nav ul li {
 
   header, nav {
     position: static;
-    margin-bottom: .75rem;
+    margin-bottom: .8rem;
   }
 
   header h1, nav ul, nav ul li {

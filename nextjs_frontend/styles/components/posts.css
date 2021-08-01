@@ -5,12 +5,12 @@
 
 .post {
   display: grid;
-  gap: 2rem;
+  gap: 2.25rem;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'post__id post__body post__date';
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1112px) {
   .post {
     gap: 0;
     grid-template-columns: 1fr 1fr;
@@ -38,5 +38,5 @@
   margin-bottom: 0;
 }
 .post-wrapper:not(:last-child) .post {
-  margin-bottom: .75rem;
+  margin-bottom: .8rem;
 }

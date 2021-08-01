@@ -22,7 +22,7 @@
 
 p:not(:empty):not(:last-child), ol:not(:empty):not(:last-child), 
 ul:not(:empty):not(:last-child), .media-wrapper:not(:last-child) {
-  margin-bottom: .75rem;
+  margin-bottom: .8rem;
 }
 
 .embed-wrapper {
