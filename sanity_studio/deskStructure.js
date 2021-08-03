@@ -9,6 +9,7 @@ export default () =>
         .title('Site Settings')
         .child(
           S.document()
+            .title('Site Settings')
             .schemaType('siteSettings')
             .documentId('siteSettings')
         ),
@@ -28,7 +29,7 @@ export default () =>
         .title('Categories')
         .child(
           S.documentList()
-            .title('Category')
+            .title('Categories')
             .showIcons(false)
             .filter('_type == "category"')
             .defaultOrdering([

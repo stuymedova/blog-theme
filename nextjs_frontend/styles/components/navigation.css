@@ -1,1 +1,4 @@
-/* TODO */
+nav svg {
+  stroke-linecap: square;
+  transform: translateY(3px);
+}

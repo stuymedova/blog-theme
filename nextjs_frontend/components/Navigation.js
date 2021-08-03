@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useHistoryContext } from '../hooks/useRouteHistory';
+import { FiChevronDown, FiChevronLeft } from 'react-icons/fi';
 
 export default function Navigation({ isPostsPage, categories, post }) {
   const { prevPath, removeHistory } = useHistoryContext();
@@ -10,6 +11,7 @@ export default function Navigation({ isPostsPage, categories, post }) {
       {isPostsPage
         ? <ul>
             <li>
+              <FiChevronDown />
               <Link href='/'><a>All</a></Link>
             </li>
             {categories.map((category) => (
@@ -22,6 +24,7 @@ export default function Navigation({ isPostsPage, categories, post }) {
           </ul>
         : <ul>
             <li>
+              <FiChevronLeft />
               {backToCategory
                 ? <Link href={prevPath}>
                     <a onClick={removeHistory}>{backToCategory.title}</a>
